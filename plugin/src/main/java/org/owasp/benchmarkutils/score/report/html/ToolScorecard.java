@@ -27,6 +27,7 @@ import org.owasp.benchmarkutils.score.CategoryResults;
 import org.owasp.benchmarkutils.score.Configuration;
 import org.owasp.benchmarkutils.score.Tool;
 import org.owasp.benchmarkutils.score.domain.TestSuiteName;
+import org.owasp.benchmarkutils.score.report.ScatterComparison;
 import org.owasp.benchmarkutils.score.report.ScatterTools;
 import org.owasp.benchmarkutils.score.report.ToolBarChart;
 import org.owasp.benchmarkutils.score.report.ToolReport;
@@ -73,6 +74,22 @@ public class ToolScorecard {
             System.out.println("Scorecard written to: " + reportPathFor(tool));
         } catch (Exception e) {
             System.out.println("Error creating and/or saving tool HTML scorecard!");
+            e.printStackTrace();
+        }
+    }
+
+    public void generateComparison(Tool... tools) {
+        ScatterComparison cmpImg =
+                new ScatterComparison(
+                        "OWASP overall results (by category)",
+                        800,
+                        tools[1].getOverallResults(),
+                        tools[0].getOverallResults());
+        File img = new File(scoreCardDir, "test.png");
+        try {
+            cmpImg.writeChartToFile(img, 800);
+        } catch (IOException e) {
+            System.out.println("Error saving tool Scatter chart to disk!");
             e.printStackTrace();
         }
     }

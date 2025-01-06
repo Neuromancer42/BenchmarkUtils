@@ -127,7 +127,7 @@ public class ScatterHome extends ScatterPlot {
         initializePlot(this.chart);
 
         XYPlot xyplot = this.chart.getXYPlot();
-        addGenerationDate(xyplot);
+        //        addGenerationDate(xyplot);
 
         // List the Key value (i.e., A, B, C) next to each plot point.
         makeDataLabels(tools, xyplot);

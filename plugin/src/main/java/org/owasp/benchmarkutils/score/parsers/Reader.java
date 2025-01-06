@@ -28,6 +28,7 @@ import java.util.List;
 import org.owasp.benchmarkutils.score.BenchmarkScore;
 import org.owasp.benchmarkutils.score.ResultFile;
 import org.owasp.benchmarkutils.score.TestSuiteResults;
+import org.owasp.benchmarkutils.score.parsers.csv.LLMReportSimpleReader;
 import org.owasp.benchmarkutils.score.parsers.csv.WhiteHatDynamicReader;
 import org.owasp.benchmarkutils.score.parsers.sarif.CodeQLReader;
 import org.owasp.benchmarkutils.score.parsers.sarif.ContrastScanReader;
@@ -112,7 +113,8 @@ public abstract class Reader {
                 new WebInspectReader(),
                 new WhiteHatDynamicReader(),
                 new ZapJsonReader(),
-                new ZapReader());
+                new ZapReader(),
+                new LLMReportSimpleReader());
     }
 
     public abstract boolean canRead(ResultFile resultFile);

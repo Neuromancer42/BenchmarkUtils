@@ -369,6 +369,14 @@ public class ScatterPlot {
         xyplot.addAnnotation(area);
     }
 
+    public static void makeBlock(XYPlot xyplot, Point2D location, double radius, Color color) {
+        double x = location.getX() - radius / 2;
+        double y = location.getY() - radius / 2;
+        Shape dot = new Ellipse2D.Double(x, y, radius, radius).getBounds2D();
+        XYShapeAnnotation area = new XYShapeAnnotation(dot, new BasicStroke(), color, color);
+        xyplot.addAnnotation(area);
+    }
+
     public static void makeRect(
             XYPlot xyplot, Point2D location, double height, double width, Color color) {
         Shape rect = new Rectangle2D.Double(location.getX(), location.getY(), width, height);

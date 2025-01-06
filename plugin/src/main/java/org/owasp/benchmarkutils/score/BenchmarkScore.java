@@ -441,6 +441,8 @@ public class BenchmarkScore extends AbstractMojo {
                 new ToolScorecard(overallAveToolResults, scoreCardDir, config, TESTSUITENAME);
 
         tools.forEach(toolScorecard::generate);
+        Tool[] toolarr = new Tool[0];
+        toolScorecard.generateComparison(tools.toArray(toolarr));
 
         // Step 8: Update all the menus for all the generated pages to reflect the tools and
         // vulnerability categories
